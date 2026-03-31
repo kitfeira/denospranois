@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edital PNAB 001/2026 – Difusão Musical de Cariacica. Apoio financeiro pra sua música tocar pela cidade toda. Inscrições de 25/03 a 24/04/2026.">
+    <title>Edital PNAB 001/2026 • Difusão Musical • Cariacica</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500&amp;display=swap');
+        
+        :root {
+            --primary: #4A7043;
+            --light-green: #E8F0E5;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, transform, box-shadow;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 200ms;
+        }
+        
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Hero com gradiente verde musgo */
+        .hero-bg {
+            background: linear-gradient(92deg, #4A7043 0%, #2E4F2E 100%);
+            animation: gradientShift 10s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Ícones musicais flutuantes (mantidos e aprimorados) */
+        .music-note {
+            position: absolute;
+            font-size: 2.8rem;
+            color: #fff;
+            opacity: 0.3;
+            animation: floatNote 14s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes floatNote {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(720deg); }
+        }
+        
+        /* Cards dinâmicos para jovens hiperestimulados */
+        .card-dynamic {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-dynamic:hover {
+            transform: scale(1.06) rotate(1deg);
+            box-shadow: 0 25px 30px -15px rgb(74 112 67);
+        }
+        
+        /* Navbar clean */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4A7043;
+        }
+        .nav-link:hover:after { width: 100%; }
+        
+        /* Alto contraste em todo o site */
+        .text-contrast { color: #112211; }
+        
+        /* Acessibilidade */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 4px solid #4A7043;
+            outline-offset: 4px;
+            border-radius: 9999px;
+        }
+        
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="tail-container bg-white text-[#112211]">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-11 h-11 bg-[#4A7043] text-white rounded-3xl flex items-center justify-center text-3xl">🌿</div>
+                <div class="heading-font text-3xl font-semibold text-[#4A7043]">CARIACICA</div>
+                <span class="text-xs font-bold bg-[#4A7043] text-white px-4 py-1 rounded-3xl">PNAB 001/2026</span>
+            </div>
+            
+            <!-- MENU DESKTOP -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#oque" class="nav-link">O que é?</a>
+                <a href="#quem" class="nav-link">Quem pode?</a>
+                <a href="#categorias" class="nav-link">Categorias</a>
+                <a href="#prazo" class="nav-link">Prazo</a>
+                <a href="#avaliacao" class="nav-link">Avaliação</a>
+                <a href="#atencoes" class="nav-link">Atenções</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <a href="#inscreva" 
+                   class="px-8 py-3.5 bg-[#4A7043] hover:bg-[#2E4F2E] text-white rounded-3xl font-semibold flex items-center gap-x-2 text-lg">
+                    <i class="fa-solid fa-rocket"></i>
+                    INScrever agora
+                </a>
+                
+                <button onclick="toggleMobile()" class="md:hidden w-12 h-12 flex items-center justify-center text-3xl text-[#4A7043]">
+                    <i id="menuIcon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- MENU MOBILE -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white px-6 py-6 border-t">
+            <a href="#oque" onclick="toggleMobile()" class="block py-4 text-xl">O que é esse edital?</a>
+            <a href="#quem" onclick="toggleMobile()" class="block py-4 text-xl">Quem pode participar?</a>
+            <a href="#categorias" onclick="toggleMobile()" class="block py-4 text-xl">Categorias e valores</a>
+            <a href="#prazo" onclick="toggleMobile()" class="block py-4 text-xl">Prazo de inscrição</a>
+            <a href="#avaliacao" onclick="toggleMobile()" class="block py-4 text-xl">Como é avaliado?</a>
+            <a href="#atencoes" onclick="toggleMobile()" class="block py-4 text-xl">Atenções importantes</a>
+        </div>
+    </nav>
+
+    <!-- HERO / CAPA (Layout 1) -->
+    <header id="hero" class="hero-bg text-white min-h-screen flex items-center relative overflow-hidden">
+        <!-- Ícones flutuantes mantidos -->
+        <div class="music-note" style="left: 8%; animation-delay: 0s;">🎵</div>
+        <div class="music-note" style="left: 22%; animation-delay: 1.8s;">🎸</div>
+        <div class="music-note" style="left: 37%; animation-delay: 3.5s;">🎤</div>
+        <div class="music-note" style="left: 53%; animation-delay: 0.8s;">🥁</div>
+        <div class="music-note" style="left: 68%; animation-delay: 4.2s;">🎹</div>
+        <div class="music-note" style="left: 83%; animation-delay: 2.5s;">🔥</div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 items-center min-h-[80vh]">
+                <div class="md:col-span-7">
+                    <div class="inline-flex items-center bg-white/20 backdrop-blur-3xl text-white text-sm font-bold px-6 py-3 rounded-3xl mb-8">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                        </span>
+                        INSCRIÇÕES ABERTAS
+                    </div>
+                    <h1 class="heading-font text-6xl md:text-7xl leading-none font-medium">
+                        EDITAL PNAB 001/2026<br>DIFUSÃO MUSICAL EM CARIACICA
+                    </h1>
+                    <p class="mt-6 text-3xl">Leve sua música para os palcos da cidade!</p>
+                    
+                    <div class="flex flex-wrap gap-4 mt-12">
+                        <a href="#inscreva" 
+                           class="px-10 py-6 bg-white text-[#4A7043] hover:bg-[#E8F0E5] rounded-3xl text-2xl font-semibold flex items-center gap-3">
+                            QUERO PARTICIPAR <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#oque" 
+                           class="px-8 py-6 border-2 border-white hover:bg-white hover:text-[#4A7043] rounded-3xl text-2xl font-medium">
+                            ENTENDA EM 30 SEGUNDOS
+                        </a>
+                    </div>
+                    
+                    <div class="mt-16 flex items-center gap-8 text-sm">
+                        <div><i class="fa-solid fa-circle-check text-3xl"></i> R$ 200 mil</div>
+                        <div><i class="fa-solid fa-circle-check text-3xl"></i> 40 projetos</div>
+                        <div><i class="fa-solid fa-circle-check text-3xl"></i> Música ao vivo na cidade</div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-5 flex justify-center relative">
+                    <div class="text-[260px] drop-shadow-2xl animate-[bounce_3s_infinite]">🎤</div>
+                    <div class="absolute top-12 right-10 text-8xl rotate-12">🌿</div>
+                    <div class="absolute bottom-20 left-10 text-7xl -rotate-12">🎸</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- O QUE É (Layout 2) -->
+    <section id="oque" class="py-24 bg-[#E8F0E5]">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-5/12">
+                    <span class="px-5 py-2 bg-[#4A7043] text-white text-xs font-bold rounded-3xl">01 • O QUE É</span>
+                    <h2 class="heading-font text-5xl mt-4 leading-none text-[#112211]">Apoio pra projetos de música circularem em eventos e espaços culturais da cidade.</h2>
+                </div>
+                <div class="md:w-7/12 text-xl leading-relaxed text-[#112211]">
+                    <p>É uma oportunidade de apoio financeiro para quem faz música em Cariacica e quer circular com seu trabalho pela cidade. O edital faz parte da Política Nacional Aldir Blanc (PNAB) e vai selecionar 40 projetos (pode aumentar se sobrar dinheiro). Valor total: R$ 200 mil.</p>
+                    <div class="grid grid-cols-2 gap-6 mt-10">
+                        <div class="bg-white rounded-3xl p-8 card-dynamic text-center">
+                            <p class="text-5xl font-bold text-[#4A7043]">R$ 200 mil</p>
+                            <p class="text-sm mt-2">Valor total do edital</p>
+                        </div>
+                        <div class="bg-white rounded-3xl p-8 card-dynamic text-center">
+                            <p class="text-5xl font-bold text-[#4A7043]">40 projetos</p>
+                            <p class="text-sm mt-2">Vagas disponíveis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUEM PODE PARTICIPAR (Layout 3) -->
+    <section id="quem" class="py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-5/12">
+                    <span class="px-5 py-2 bg-[#4A7043] text-white text-xs font-bold rounded-3xl">02 • QUEM PODE?</span>
+                    <h2 class="heading-font text-5xl mt-4 leading-none">Artistas, duplas, grupos, bandas, MEIs, PJs e coletivos sem CNPJ de Cariacica.</h2>
+                </div>
+                <div class="md:w-7/12">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-[#E8F0E5] rounded-3xl p-8 card-dynamic">
+                            <i class="fa-solid fa-check-circle text-5xl text-[#4A7043] mb-6"></i>
+                            <h3 class="text-3xl font-semibold">Pode participar</h3>
+                            <ul class="mt-6 space-y-4 text-lg">
+                                <li class="flex gap-3">👤 Pessoa física</li>
+                                <li class="flex gap-3">🏪 MEI</li>
+                                <li class="flex gap-3">🏢 Pessoa jurídica</li>
+                                <li class="flex gap-3">👥 Coletivo sem CNPJ (com representante)</li>
+                            </ul>
+                            <p class="mt-10 text-sm bg-white p-4 rounded-2xl">Precisa morar ou atuar em Cariacica há pelo menos 1 ano e estar inscrito no Portal Sou Cultura.</p>
+                        </div>
+                        
+                        <div class="bg-white border border-[#4A7043]/30 rounded-3xl p-8 card-dynamic">
+                            <i class="fa-solid fa-xmark-circle text-5xl text-red-600 mb-6"></i>
+                            <h3 class="text-3xl font-semibold">Não pode participar</h3>
+                            <ul class="mt-6 space-y-4 text-lg">
+                                <li>Quem ajudou a construir ou avaliar o edital</li>
+                                <li>Parentes de servidores envolvidos</li>
+                                <li>Autoridades públicas listadas no edital</li>
+                                <li>Quem não está no Portal Sou Cultura</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIAS E VALORES (Layout 4) -->
+    <section id="categorias" class="py-24 bg-[#E8F0E5]">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <span class="px-5 py-2 bg-[#4A7043] text-white text-xs font-bold rounded-3xl">03 • CATEGORIAS</span>
+            <h2 class="heading-font text-5xl mt-4 mb-12">Solo/Dupla – R$ 3 mil • Grupo até 5 – R$ 5 mil • Grupo acima de 5 – R$ 8 mil</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-10 card-dynamic flex flex-col">
+                    <div class="text-7xl">🎤</div>
+                    <h4 class="text-3xl font-semibold mt-6">Solo / Dupla</h4>
+                    <div class="mt-auto text-6xl font-bold text-[#4A7043]">R$ 3.000</div>
+                </div>
+                <div class="bg-white rounded-3xl p-10 card-dynamic flex flex-col">
+                    <div class="text-7xl">🎸</div>
+                    <h4 class="text-3xl font-semibold mt-6">Grupo / Banda até 5 componentes</h4>
+                    <div class="mt-auto text-6xl font-bold text-[#4A7043]">R$ 5.000</div>
+                </div>
+                <div class="bg-white rounded-3xl p-10 card-dynamic flex flex-col">
+                    <div class="text-7xl">🥁</div>
+                    <h4 class="text-3xl font-semibold mt-6">Grupo / Banda acima de 5 componentes</h4>
+                    <div class="mt-auto text-6xl font-bold text-[#4A7043]">R$ 8.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRAZO (Layout 5) -->
+    <section id="prazo" class="py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <span class="px-5 py-2 bg-[#4A7043] text-white text-xs font-bold rounded-3xl">04 • PRAZO</span>
+                    <h2 class="heading-font text-5xl mt-4">Inscrições: 25/03 a 24/04 Até 16h do último dia</h2>
+                    <div class="mt-8 bg-[#E8F0E5] rounded-3xl p-8 text-center">
+                        <div class="text-6xl font-bold">25 MARÇO • 8h</div>
+                        <div class="my-4 text-4xl opacity-40">até</div>
+                        <div class="text-6xl font-bold text-[#4A7043]">24 ABRIL • 16h</div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div id="countdown" class="grid grid-cols-4 gap-4 text-center">
+                        <div class="bg-[#4A7043] text-white rounded-3xl p-6 card-dynamic">
+                            <div id="days" class="text-6xl font-bold">28</div>
+                            <div class="text-xs tracking-widest mt-1">DIAS</div>
+                        </div>
+                        <div class="bg-[#4A7043] text-white rounded-3xl p-6 card-dynamic">
+                            <div id="hours" class="text-6xl font-bold">12</div>
+                            <div class="text-xs tracking-widest mt-1">HORAS</div>
+                        </div>
+                        <div class="bg-[#4A7043] text-white rounded-3xl p-6 card-dynamic">
+                            <div id="minutes" class="text-6xl font-bold">45</div>
+                            <div class="text-xs tracking-widest mt-1">MINUTOS</div>
+                        </div>
+                        <div class="bg-[#4A7043] text-white rounded-3xl p-6 card-dynamic">
+                            <div id="seconds" class="text-6xl font-bold">19</div>
+                            <div class="text-xs tracking-widest mt-1">SEGUNDOS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE PRECISA ENVIAR + QUANTIDADE DE VAGAS -->
+    <section class="py-24 bg-[#E8F0E5]">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-7">
+                    <h2 class="text-4xl font-semibold mb-8">📬 O que precisa enviar na inscrição?</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-3xl flex gap-4 card-dynamic"><span class="font-semibold">📝 Formulário de inscrição / plano de trabalho</span></div>
+                        <div class="bg-white p-6 rounded-3xl flex gap-4 card-dynamic"><span class="font-semibold">📄 Documentos da categoria (quando houver)</span></div>
+                        <div class="bg-white p-6 rounded-3xl flex gap-4 card-dynamic"><span class="font-semibold">🪪 Autodeclaração (se for por cota)</span></div>
+                        <div class="bg-white p-6 rounded-3xl flex gap-4 card-dynamic"><span class="font-semibold">👥 Declaração de representação (coletivo sem CNPJ)</span></div>
+                        <div class="bg-white p-6 rounded-3xl flex gap-4 card-dynamic"><span class="font-semibold">📸 Outros materiais que ajudem na avaliação</span></div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 bg-white rounded-3xl p-12 flex flex-col justify-center">
+                    <h3 class="text-4xl font-semibold">São 40 vagas no total</h3>
+                    <p class="mt-4 text-xl">Distribuídas entre ampla concorrência e cotas para pessoas negras, indígenas e pessoas com deficiência.</p>
+                    <div class="flex flex-wrap gap-3 mt-10">
+                        <div class="bg-[#E8F0E5] px-6 py-3 rounded-3xl">Pessoas negras</div>
+                        <div class="bg-[#E8F0E5] px-6 py-3 rounded-3xl">Pessoas indígenas</div>
+                        <div class="bg-[#E8F0E5] px-6 py-3 rounded-3xl">Pessoas com deficiência</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVALIAÇÃO (Layout 6) -->
+    <section id="avaliacao" class="py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <span class="px-5 py-2 bg-[#4A7043] text-white text-xs font-bold rounded-3xl">05 • AVALIAÇÃO</span>
+            <h2 class="heading-font text-5xl mt-4 text-center">O projeto será analisado pela qualidade, relevância, impacto, orçamento, divulgação, ficha técnica e trajetória.</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 mt-12">
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">🌟 Qualidade do projeto</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">❤️ Relevância cultural para Cariacica</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">🤝 Impacto e integração comunitária</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">💰 Coerência do orçamento</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">📢 Plano de divulgação</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">📋 Ficha técnica</div>
+                <div class="card-dynamic bg-[#E8F0E5] p-6 rounded-3xl text-center">🏆 Trajetória do proponente</div>
+            </div>
+            
+            <div class="max-w-lg mx-auto mt-16 bg-[#4A7043] text-white rounded-3xl p-10 text-center">
+                <p class="text-4xl">Nota máxima: 70 pontos</p>
+                <p class="mt-6">Precisa de no mínimo 40 pontos e não pode tirar zero em nenhum critério obrigatório.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALERTA FINAL (Layout 7) -->
+    <section id="atencoes" class="py-24 bg-[#4A7043] text-white">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <span class="px-5 py-2 bg-white text-[#4A7043] text-xs font-bold rounded-3xl">06 • ATENÇÕES IMPORTANTES</span>
+                    <h2 class="heading-font text-5xl mt-4">Só pode 1 projeto por proponente • Projeto precisa ter acessibilidade • Nota mínima: 40 pontos</h2>
+                </div>
+                <div class="md:col-span-8 grid sm:grid-cols-2 gap-6">
+                    <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8">🔒 Cada agente cultural só pode inscrever 1 projeto</div>
+                    <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8">♿ O projeto deve prever acessibilidade</div>
+                    <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8">📆 Executar em até 12 meses após receber o recurso</div>
+                    <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8">📄 Quem for selecionado passa pela habilitação documental</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="inscreva" class="py-24 bg-[#E8F0E5]">
+        <div class="max-w-screen-2xl mx-auto px-6 text-center">
+            <h2 class="text-6xl heading-font font-medium">Pronto para fazer sua música circular por Cariacica?</h2>
+            <p class="text-3xl mt-8">Acesse o Portal Sou Cultura e inscreva seu projeto agora!</p>
+            <a href="https://www.cariacica.es.gov.br/sou-cultura" target="_blank"
+               class="mt-12 inline-flex px-16 py-8 bg-[#4A7043] hover:bg-[#2E4F2E] text-white rounded-3xl text-3xl font-semibold items-center gap-4">
+                ACESSAR PORTAL SOU CULTURA <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <p class="mt-10 text-sm">Dúvidas? Envie e-mail para cultura@cariacica.es.gov.br</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#112211] text-white/80 py-12 text-center">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <p>Prefeitura Municipal de Cariacica • Secretaria de Cultura</p>
+            <p class="mt-2 text-sm">Edital PNAB 001/2026 – Difusão Musical • Linguagem simples conforme Lei Nº 15.263, de 14 de novembro de 2025</p>
+            <div class="flex justify-center gap-x-8 mt-8 text-xs">
+                <a href="#" class="hover:text-white">Edital completo (PDF)</a>
+                <a href="#" class="hover:text-white">Perguntas frequentes</a>
+                <a href="#" class="hover:text-white">Portal Sou Cultura</a>
+            </div>
+            <p class="text-[10px] mt-12">Feito com carinho para os jovens artistas de Cariacica • 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        function initTailwind() {
+            return { config() { return { theme: { extend: {} } } } }
+        }
+        
+        function toggleMobile() {
+            const menu = document.getElementById('mobileMenu')
+            const icon = document.getElementById('menuIcon')
+            menu.classList.toggle('hidden')
+            icon.classList.toggle('fa-bars')
+            icon.classList.toggle('fa-xmark')
+        }
+        
+        function startCountdown() {
+            const target = new Date('2026-04-24T16:00:00').getTime()
+            setInterval(() => {
+                const now = new Date().getTime()
+                const diff = target - now
+                if (diff < 0) return
+                document.getElementById('days').textContent = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0')
+                document.getElementById('hours').textContent = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0')
+                document.getElementById('minutes').textContent = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0')
+                document.getElementById('seconds').textContent = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0')
+            }, 1000)
+        }
+        
+        window.onload = function() {
+            initTailwind()
+            startCountdown()
+            console.log('%c🌿 Site em verde musgo feito com carinho para você, jovem artista! Boa sorte no edital!', 'color:#4A7043; font-size:14px; font-family:monospace')
+        }
+    </script>
+</body>
+</html>
